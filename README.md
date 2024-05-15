@@ -1,3 +1,11 @@
+<div style="text-align: center;">
+  <img width="100" src="assets/green-tea.png" alt="Spotube Logo">
+
+<p>广州文熙阁贸易有限公司管理系统</p>
+<p>Guangzhou Wenxige Trading Co., Ltd. Admin Management System</p>
+
+</div>
+
 ## Git Branch
 
 - **master**: For release version only.
@@ -25,3 +33,7 @@
 | JJWT         | 0.11.5  |
 | JWT Nimbusds | 9.37.3  |
 | Lombok       | 1.18.32 |
+
+### Author
+
+- [x] [Chrisio Gwaan](https://github.com/ChrisioGwaan)
