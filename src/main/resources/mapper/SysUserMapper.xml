@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dangos.ce.mapper.SysUserMapper">
+    
+    <resultMap id="sysUserMap" type="com.dangos.ce.entity.SysUser">
+        <id column="id" property="id" />
+        <result column="username" property="username" />
+        <result column="firstname" property="firstname" />
+        <result column="lastname" property="lastname" />
+        <result column="password" property="password" />
+        <result column="email" property="email" />
+        <result column="role" property="role" />
+        <result column="create_time" property="createTime" />
+        <result column="modified_time" property="modifiedTime" />
+    </resultMap>
+
+    <sql id="table_name">sys_user</sql>
+
+    <select id="selectByUsername" resultMap="sysUserMap">
+        SELECT
+            *
+        FROM
+            <include refid="table_name"/> a
+        <where>
+            a.username = #{username} AND a.is_del = 0
+        </where>
+    </select>
+
+</mapper>

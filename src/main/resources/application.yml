@@ -1,0 +1,34 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ce
+  datasource:
+    url: jdbc:mysql://localhost:3306/dangoce?useSSL=false&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+
+logging:
+  level:
+    org:
+      springframework:
+        web: ERROR
+        security: ERROR
+      com:
+        baomidou:
+          mybatis-plus: DEBUG
+        apache:
+          ibatis: DEBUG
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.dangos.ce.entity
+  global-config:
+    db-config:
+      logic-delete-value: '1'
+      logic-not-delete-value: '0'
+      logic-delete-field: isDel
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
