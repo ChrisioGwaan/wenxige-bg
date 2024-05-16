@@ -73,9 +73,14 @@ public class BrandController {
         return R.ok(brandService.removeById(id));
     }
 
+    /**
+     * dropdown list
+     *
+     * @return R<List<Brand>>
+     */
     @GetMapping("/dropdown")
-    public List<Brand> dropDownList() {
-        return brandService.list();
+    public R<List<Brand>> dropDownList() {
+        return R.ok(brandService.list());
     }
 
 }
