@@ -60,4 +60,15 @@ public class ProductController {
         return productService.updateProduct(productCreateOrUpdateDTO);
     }
 
+    /**
+     * Delete product, logical delete
+     *
+     * @param id product ID
+     * @return R
+     */
+    @DeleteMapping("/{id}")
+    public R deleteProduct(@PathVariable("id") Long id) {
+        return R.ok(productService.removeById(id));
+    }
+
 }
