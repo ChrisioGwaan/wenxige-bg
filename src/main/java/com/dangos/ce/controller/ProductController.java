@@ -17,7 +17,7 @@ public class ProductController {
     private final ProductService productService;
 
     /**
-    * Get product list in pagination
+     * Get product list in pagination
      *
      * @param page page info
      * @return IPage<Product>
