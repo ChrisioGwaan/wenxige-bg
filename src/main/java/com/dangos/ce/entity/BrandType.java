@@ -21,7 +21,7 @@ public class BrandType {
     /**
      * Brand Type ID 品牌種類ID
      */
-    @TableId(type = IdType.AUTO)
+    @TableId(type = IdType.ASSIGN_ID)
     private Long id;
 
     /**
