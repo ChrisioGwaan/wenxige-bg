@@ -1,10 +1,86 @@
 package com.dangos.ce.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.dangos.ce.dto.BrandTypeCreateOrUpdateDTO;
+import com.dangos.ce.entity.BrandType;
+import com.dangos.ce.service.BrandTypeService;
+import com.dangos.ce.util.R;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/v1/brandType")
 public class BrandTypeController {
+    
+    private final BrandTypeService brandTypeService;
+
+    /**
+     * Get brand type list in pagination
+     *
+     * @param page page info
+     * @return IPage<BrandType>
+     */
+    @GetMapping("/page")
+    public IPage<BrandType> getPage(Page<BrandType> page) {
+        return brandTypeService.listBrandType(page);
+    }
+
+    /**
+     * Get brand type by ID
+     *
+     * @param id brand type ID
+     * @return R<BrandType>
+     */
+    @GetMapping("/{id}")
+    public R<BrandType> selectById(@PathVariable("id") Long id) {
+        return R.ok(brandTypeService.findById(id));
+    }
+
+    /**
+     * Create new brand type
+     *
+     * @param brandTypeCreateOrUpdateDTO brand type create or update DTO object
+     * @return R
+     */
+    @PostMapping("/create")
+    public R createNew(@RequestBody BrandTypeCreateOrUpdateDTO brandTypeCreateOrUpdateDTO) {
+        return brandTypeService.createNew(brandTypeCreateOrUpdateDTO);
+    }
+
+    /**
+     * Update brand type
+     *
+     * @param brandTypeCreateOrUpdateDTO brand type create or update DTO object
+     * @return R
+     */
+    @PutMapping("/update")
+    public R updateProduct(@RequestBody BrandTypeCreateOrUpdateDTO brandTypeCreateOrUpdateDTO) {
+        return brandTypeService.updateBrandType(brandTypeCreateOrUpdateDTO);
+    }
+
+    /**
+     * Delete brand type, logical delete
+     *
+     * @param id brand type ID
+     * @return R
+     */
+    @DeleteMapping("/{id}")
+    public R deleteBrandType(@PathVariable("id") Long id) {
+        return R.ok(brandTypeService.removeById(id));
+    }
+
+    /**
+     * dropdown list
+     *
+     * @return R<List<BrandType>>
+     */
+    @GetMapping("/dropdown")
+    public R<List<BrandType>> dropdownList() {
+        return R.ok(brandTypeService.list());
+    }
 
 }
