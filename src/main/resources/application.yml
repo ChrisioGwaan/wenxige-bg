@@ -5,7 +5,7 @@ spring:
   application:
     name: ce
   datasource:
-    url: jdbc:mysql://localhost:3306/dangoce?useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://${MYSQL_HOST}:3306/${MYSQL_DATABASE}?useSSL=false&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: root

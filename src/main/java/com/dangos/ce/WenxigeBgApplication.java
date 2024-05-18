@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan("com.dangos.ce.mapper")
-public class CeApplication {
+public class WenxigeBgApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CeApplication.class, args);
+		SpringApplication.run(WenxigeBgApplication.class, args);
 	}
 
 }

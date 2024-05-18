@@ -9,10 +9,10 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.dangos</groupId>
-	<artifactId>ce</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>ce</name>
-	<description>For Dango CE testing only</description>
+	<artifactId>wenxige-bg</artifactId>
+	<version>0.1.0</version>
+	<name>wenxige-bg</name>
+	<description>Wenxige backend service</description>
 	<properties>
 		<java.version>21</java.version>
 		<jwt.nimbusds>9.37.3</jwt.nimbusds>
