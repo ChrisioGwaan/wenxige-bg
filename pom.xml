@@ -20,6 +20,7 @@
 		<project.lombok>1.18.32</project.lombok>
 		<jjwt.version>0.11.5</jjwt.version>
 		<mybatis.plus.version>3.5.6</mybatis.plus.version>
+		<aws.sdk.version>2.25.55</aws.sdk.version>
 	</properties>
 	<dependencies>
 
@@ -123,6 +124,20 @@
 			<groupId>com.google.googlejavaformat</groupId>
 			<artifactId>google-java-format</artifactId>
 			<version>1.22.0</version>
+		</dependency>
+
+		<!-- AWS SDK S3 for java-->
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-s3</artifactId>
+			<version>1.12.725</version>
+		</dependency>
+
+		<!-- Javax is required for Java9+ -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.1</version>
 		</dependency>
 
 	</dependencies>
