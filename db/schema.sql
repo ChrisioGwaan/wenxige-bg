@@ -3,7 +3,7 @@ CREATE TABLE `sys_user` (
   `username` VARCHAR ( 64 ) NOT NULL COMMENT 'Username',
   `firstname` VARCHAR ( 64 ) DEFAULT NULL COMMENT 'User first name',
   `lastname` VARCHAR ( 64 ) DEFAULT NULL COMMENT 'User last name',
-  `password` VARCHAR ( 64 ) NOT NULL COMMENT 'User password',
+  `password` VARCHAR ( 512 ) NOT NULL COMMENT 'User password',
   `email` VARCHAR ( 64 ) DEFAULT NULL COMMENT 'User email',
   `is_del` CHAR ( 1 ) DEFAULT '0' COMMENT 'Deletion status 刪除狀態 0-正常 1-已刪除',
 PRIMARY KEY ( `id` )
