@@ -6,4 +6,43 @@
 
 <mapper namespace="com.dangos.ce.mapper.ProductMapper">
 
+    <resultMap id="productPageMap" type="com.dangos.ce.vo.ProductPageVO">
+        <id column="id" property="id" />
+        <result column="product_name" property="productName" />
+        <result column="specification" property="specification" />
+        <result column="manufacture_date" property="manufactureDate" />
+        <result column="has_specific_day" property="hasSpecificDay" />
+        <result column="retail_price" property="retailPrice" />
+        <result column="sell_price" property="sellPrice" />
+        <result column="unit_type" property="unitType" />
+        <result column="current_quantity" property="currentQuantity" />
+        <result column="comment" property="comment" />
+        <result column="create_time" property="createTime" />
+        <result column="modified_time" property="modifiedTime" />
+        <result column="is_lock" property="isLock" />
+    </resultMap>
+
+    <sql id="table_name">product</sql>
+
+    <select id="getPageResult" resultMap="productPageMap">
+        SELECT
+            a.*
+        FROM
+            <include refid="table_name"/> a
+        <where>
+            a.is_del = 0
+            <if test="productPageQueryDTO.productName != null and productPageQueryDTO.productName != ''">
+                AND a.product_name LIKE CONCAT('%', #{productPageQueryDTO.productName}, '%')
+            </if>
+            <if test="productPageQueryDTO.startDate != null and productPageQueryDTO.startDate != ''">
+                AND a.create_time &gt;= #{productPageQueryDTO.startDate}
+            </if>
+            <if test="productPageQueryDTO.endDate != null and productPageQueryDTO.endDate != ''">
+                AND a.create_time &lt;= #{productPageQueryDTO.endDate}
+            </if>
+        </where>
+        ORDER BY
+            a.create_time DESC
+    </select>
+
 </mapper>

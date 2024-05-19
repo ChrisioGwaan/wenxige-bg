@@ -2,11 +2,15 @@ package com.dangos.ce.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.dangos.ce.dto.ProductBatchQueryDTO;
 import com.dangos.ce.dto.ProductCreateOrUpdateDTO;
+import com.dangos.ce.dto.ProductPageQueryDTO;
 import com.dangos.ce.entity.Product;
 import com.dangos.ce.service.ProductService;
 import com.dangos.ce.util.R;
+import com.dangos.ce.vo.ProductPageVO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,8 +27,8 @@ public class ProductController {
      * @return IPage<Product>
     */
     @GetMapping("/page")
-    public IPage<Product> getPage(Page<Product> page) {
-        return productService.listProduct(page);
+    public R<IPage<ProductPageVO>> getPage(Page<Product> page, ProductPageQueryDTO productPageQueryDTO) {
+        return R.ok(productService.listProduct(page, productPageQueryDTO));
     }
 
     /**
@@ -34,8 +38,12 @@ public class ProductController {
      * @return R<Product>
      */
     @GetMapping("/{id}")
-    public R<Product> selectById(@PathVariable("id") Long id) {
-        return R.ok(productService.findById(id));
+    public R<ProductCreateOrUpdateDTO> selectById(@PathVariable("id") Long id) {
+        ProductCreateOrUpdateDTO productCreateOrUpdateDTO = new ProductCreateOrUpdateDTO();
+        Product product = productService.getById(id);
+        BeanUtils.copyProperties(product, productCreateOrUpdateDTO);
+        productCreateOrUpdateDTO.setId(Long.toString(product.getId()));
+        return R.ok(productCreateOrUpdateDTO);
     }
 
     /**
@@ -71,4 +79,14 @@ public class ProductController {
         return R.ok(productService.removeById(id));
     }
 
+    /**
+     * Delete multiple products, logical delete
+     *
+     * @param productBatchQueryDTO product batch query DTO object
+     * @return R
+     */
+    @DeleteMapping("/batchDelete")
+    public R batchDelete(@RequestBody ProductBatchQueryDTO productBatchQueryDTO) {
+        return R.ok(productService.removeByIds(productBatchQueryDTO.getProductIds()));
+    }
 }

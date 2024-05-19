@@ -1,4 +1,4 @@
-package com.dangos.ce.dto;
+package com.dangos.ce.vo;
 
 import lombok.Data;
 
@@ -6,17 +6,12 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
-public class ProductCreateOrUpdateDTO {
+public class ProductPageVO {
 
     /**
      * Product ID 產品ID
      */
     private String id;
-
-    /**
-     * Type ID of the specific brand 產品所在品牌的種類id
-     */
-    private Long brandTypeId;
 
     /**
      * Name of the Product 產品名稱
@@ -32,6 +27,7 @@ public class ProductCreateOrUpdateDTO {
      * Manufacture date of the Product 產品生產日期
      */
     private LocalDate manufactureDate;
+    private String manufactureDateStr;
 
     /**
      * If the manufacture date has a specific day 生產日期是否精確到天
@@ -62,5 +58,20 @@ public class ProductCreateOrUpdateDTO {
      * Comment 備註
      */
     private String comment;
+
+    /**
+     * Create time 創建時間
+     */
+    private String createTime;
+
+    /**
+     * Modified time 修改時間
+     */
+    private String modifiedTime;
+
+    /**
+     * Lock status 禁用狀態 0-啟用 1-禁用
+     */
+    private Character isLock;
 
 }
