@@ -6,4 +6,40 @@
 
 <mapper namespace="com.dangos.ce.mapper.BrandMapper">
 
+    <resultMap id="brandPageMap" type="com.dangos.ce.vo.BrandPageVO">
+        <id column="id" property="id" />
+        <result column="brand_name" property="brandName" />
+        <result column="origin_year" property="originYear" />
+        <result column="comment" property="comment" />
+        <result column="create_time" property="createTime" />
+        <result column="modified_time" property="modifiedTime" />
+        <result column="is_lock" property="isLock" />
+    </resultMap>
+
+    <sql id="table_name">brand</sql>
+
+    <select id="getPageResult" resultMap="brandPageMap">
+        SELECT
+            a.*
+        FROM
+            <include refid="table_name"/> a
+        <where>
+            a.is_del = 0
+            <if test="brandPageQueryDTO.brandName != null and brandPageQueryDTO.brandName != ''">
+                AND a.brand_name LIKE CONCAT('%', #{brandPageQueryDTO.brandName}, '%')
+            </if>
+            <if test="brandPageQueryDTO.originYear != null and brandPageQueryDTO.originYear != ''">
+                AND a.origin_year LIKE CONCAT('%', #{brandPageQueryDTO.originYear}, '%')
+            </if>
+            <if test="brandPageQueryDTO.startDate != null and brandPageQueryDTO.startDate != ''">
+                AND a.create_time &gt;= #{brandPageQueryDTO.startDate}
+            </if>
+            <if test="brandPageQueryDTO.endDate != null and brandPageQueryDTO.endDate != ''">
+                AND a.create_time &lt;= #{brandPageQueryDTO.endDate}
+            </if>
+        </where>
+        ORDER BY
+            a.create_time DESC
+    </select>
+
 </mapper>

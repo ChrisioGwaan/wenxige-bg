@@ -20,7 +20,7 @@ public class BrandCreateOrUpdateDTO {
     /**
      * Origin year of the product 品牌產地
      */
-    private Year originYear;
+    private String originYear;
 
     /**
      * Comment 備註

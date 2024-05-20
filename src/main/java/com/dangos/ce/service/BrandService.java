@@ -4,14 +4,18 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.dangos.ce.dto.BrandCreateOrUpdateDTO;
+import com.dangos.ce.dto.BrandPageQueryDTO;
 import com.dangos.ce.entity.Brand;
 import com.dangos.ce.util.R;
+import com.dangos.ce.vo.BrandPageVO;
 
 public interface BrandService extends IService<Brand> {
 
-    IPage<Brand> listBrand(Page<Brand> page);
+    IPage<BrandPageVO> listBrand(Page<Brand> page, BrandPageQueryDTO brandPageQueryDTO);
 
     Brand findById(Long id);
+
+    BrandPageVO selectById(Long id);
 
     R createNew(BrandCreateOrUpdateDTO brandCreateOrUpdateDTO);
 
