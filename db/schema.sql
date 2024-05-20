@@ -64,3 +64,18 @@ CREATE TABLE `brand_type` (
   `is_del` CHAR ( 1 ) DEFAULT '0' NOT NULL COMMENT 'Deletion status 刪除狀態 0-正常 1-已刪除',
 PRIMARY KEY ( `id` )
 ) ENGINE = InnoDB AUTO_INCREMENT = 0 DEFAULT CHARSET = utf8mb4 COMMENT = 'Brand Type 品牌種類表';
+
+CREATE TABLE `sys_file` (
+  `id` BIGINT ( 20 ) NOT NULL COMMENT 'File ID 文件ID',
+  `file_name` VARCHAR ( 512 ) DEFAULT NULL COMMENT 'File name 文件名稱',
+  `bucket_name` VARCHAR ( 512 ) DEFAULT NULL COMMENT 'Bucket name 桶名',
+  `path` VARCHAR ( 512 ) DEFAULT NULL COMMENT 'Path of the file 文件路徑',
+  `type` VARCHAR ( 64 ) DEFAULT NULL COMMENT 'Type of the file 文件類型',
+  `size` BIGINT ( 64 ) DEFAULT NULL COMMENT 'Size of the file 文件大小 (KB)',
+  `create_user` VARCHAR ( 64 ) NOT NULL COMMENT 'Create user 創建的用戶名',
+  `modified_user` VARCHAR ( 64 ) DEFAULT NULL COMMENT 'Modified user 修改的用戶名',
+  `create_time` DATETIME NOT NULL COMMENT 'Create time 創建時間',
+  `modified_time` DATETIME DEFAULT NULL COMMENT 'Modified time 修改時間',
+  `is_del` CHAR ( 1 ) DEFAULT '0' NOT NULL COMMENT 'Deletion status 刪除狀態 0-正常 1-已刪除',
+PRIMARY KEY ( `id` )
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = 'sys_file 文件管理表';
