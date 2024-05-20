@@ -61,6 +61,7 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, Brand> implements
     public R createNew(BrandCreateOrUpdateDTO brandCreateOrUpdateDTO) {
         Brand brand = new Brand();
         BeanUtils.copyProperties(brandCreateOrUpdateDTO, brand);
+        brand.setOriginYear(Year.parse(brandCreateOrUpdateDTO.getOriginYear()));
         brand.setCreateUser(jwtService.getUsernameFromToken());
         brand.setCreateTime(LocalDateTime.now());
         return R.ok(this.save(brand), "Create Success!");
