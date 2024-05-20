@@ -2,10 +2,13 @@ package com.dangos.ce.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.dangos.ce.dto.BrandTypeBatchQueryDTO;
 import com.dangos.ce.dto.BrandTypeCreateOrUpdateDTO;
+import com.dangos.ce.dto.BrandTypePageQueryDTO;
 import com.dangos.ce.entity.BrandType;
 import com.dangos.ce.service.BrandTypeService;
 import com.dangos.ce.util.R;
+import com.dangos.ce.vo.BrandTypePageVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,8 +28,8 @@ public class BrandTypeController {
      * @return IPage<BrandType>
      */
     @GetMapping("/page")
-    public IPage<BrandType> getPage(Page<BrandType> page) {
-        return brandTypeService.listBrandType(page);
+    public R<IPage<BrandTypePageVO>> getPage(Page<BrandType> page, BrandTypePageQueryDTO brandTypePageQueryDTO) {
+        return R.ok(brandTypeService.listBrandType(page, brandTypePageQueryDTO));
     }
 
     /**
@@ -36,7 +39,7 @@ public class BrandTypeController {
      * @return R<BrandType>
      */
     @GetMapping("/{id}")
-    public R<BrandType> selectById(@PathVariable("id") Long id) {
+    public R<BrandTypePageVO> selectById(@PathVariable("id") Long id) {
         return R.ok(brandTypeService.findById(id));
     }
 
@@ -71,6 +74,17 @@ public class BrandTypeController {
     @DeleteMapping("/{id}")
     public R deleteBrandType(@PathVariable("id") Long id) {
         return R.ok(brandTypeService.removeById(id));
+    }
+
+    /**
+     * Delete multiple brand types, logical delete
+     *
+     * @param brandTypeBatchQueryDTO brand type batch query DTO object
+     * @return R
+     */
+    @DeleteMapping("/batchDelete")
+    public R batchDeleteBrandType(@RequestBody BrandTypeBatchQueryDTO brandTypeBatchQueryDTO) {
+        return R.ok(brandTypeService.removeByIds(brandTypeBatchQueryDTO.getBrandTypeIds()));
     }
 
     /**
