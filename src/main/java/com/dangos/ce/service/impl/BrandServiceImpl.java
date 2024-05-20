@@ -29,7 +29,11 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, Brand> implements
 
     @Override
     public IPage<BrandPageVO> listBrand(Page<Brand> page, BrandPageQueryDTO brandPageQueryDTO) {
-        return baseMapper.getPageResult(page, brandPageQueryDTO);
+        IPage<BrandPageVO> brandPageVOIPage = baseMapper.getPageResult(page, brandPageQueryDTO);
+        brandPageVOIPage.getRecords().forEach(brandPageVO -> {
+            brandPageVO.setOriginYear(brandPageVO.getOriginYear().substring(0, 4));
+        });
+        return brandPageVOIPage;
     }
 
     @Override
@@ -45,6 +49,7 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, Brand> implements
         brandPageVO.setId(brand.getId().toString());
         brandPageVO.setIsLock(String.valueOf(brand.getIsLock()));
         brandPageVO.setCreateTime(brand.getCreateTime().toString());
+        brandPageVO.setOriginYear(brand.getOriginYear().toString().substring(0, 4));
         if (ObjectUtils.isNotEmpty(brand.getModifiedTime())) {
             brandPageVO.setModifiedTime(brand.getModifiedTime().toString());
         }

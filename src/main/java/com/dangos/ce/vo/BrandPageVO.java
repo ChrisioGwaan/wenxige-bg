@@ -11,7 +11,7 @@ public class BrandPageVO {
 
     private String brandName;
 
-    private Year originYear;
+    private String originYear;
 
     private String comment;
 
