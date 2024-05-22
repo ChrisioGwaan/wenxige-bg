@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.Year;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -83,5 +84,8 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, Brand> implements
         return R.ok(this.updateById(existedBrand), "Update Success!");
     }
 
+    public List<BrandPageVO> dropDownList(String args) {
+        return baseMapper.dropDownList(args);
+    }
 
 }

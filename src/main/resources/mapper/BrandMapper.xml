@@ -42,4 +42,19 @@
             a.create_time DESC
     </select>
 
+    <select id="dropDownList" resultMap="brandPageMap">
+        SELECT
+            a.*
+        FROM
+            <include refid="table_name"/> a
+        <where>
+            a.is_del = 0
+            <if test="args != null and args != ''">
+                AND a.brand_name LIKE CONCAT('%', #{args}, '%')
+            </if>
+        </where>
+        ORDER BY
+            a.create_time DESC
+    </select>
+
 </mapper>

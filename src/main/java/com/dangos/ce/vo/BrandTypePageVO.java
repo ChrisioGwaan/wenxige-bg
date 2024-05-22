@@ -7,6 +7,8 @@ public class BrandTypePageVO {
 
     private String id;
 
+    private String brandId;
+
     private String brandName;
 
     private String brandTypeName;

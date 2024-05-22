@@ -8,9 +8,13 @@ import com.dangos.ce.entity.Brand;
 import com.dangos.ce.vo.BrandPageVO;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface BrandMapper extends BaseMapper<Brand> {
 
     IPage<BrandPageVO> getPageResult(Page<Brand> page, BrandPageQueryDTO brandPageQueryDTO);
+
+    List<BrandPageVO> dropDownList(String args);
 
 }

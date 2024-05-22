@@ -93,8 +93,8 @@ public class BrandController {
      * @return R<List<Brand>>
      */
     @GetMapping("/dropdown")
-    public R<List<Brand>> dropDownList() {
-        return R.ok(brandService.list());
+    public R dropDownList(@RequestParam(value = "args", required = false) String args) {
+        return R.ok(brandService.dropDownList(args));
     }
 
 }

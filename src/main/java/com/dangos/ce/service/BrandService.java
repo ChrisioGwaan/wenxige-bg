@@ -9,6 +9,8 @@ import com.dangos.ce.entity.Brand;
 import com.dangos.ce.util.R;
 import com.dangos.ce.vo.BrandPageVO;
 
+import java.util.List;
+
 public interface BrandService extends IService<Brand> {
 
     IPage<BrandPageVO> listBrand(Page<Brand> page, BrandPageQueryDTO brandPageQueryDTO);
@@ -20,5 +22,7 @@ public interface BrandService extends IService<Brand> {
     R createNew(BrandCreateOrUpdateDTO brandCreateOrUpdateDTO);
 
     R updateBrand(BrandCreateOrUpdateDTO brandCreateOrUpdateDTO);
+
+    List<BrandPageVO> dropDownList(String args);
 
 }

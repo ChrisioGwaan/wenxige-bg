@@ -42,7 +42,7 @@ public class BrandTypeServiceImpl extends ServiceImpl<BrandTypeMapper, BrandType
         }
         BrandTypePageVO brandTypePageVO = new BrandTypePageVO();
         BeanUtils.copyProperties(brandType, brandTypePageVO);
-        brandTypePageVO.setBrandName(brandMapper.selectById(brandType.getBrandId()).getBrandName());
+        brandTypePageVO.setBrandId(brandType.getBrandId().toString());
         brandTypePageVO.setId(brandType.getId().toString());
         brandTypePageVO.setCreateTime(brandType.getCreateTime().toString());
         if (ObjectUtils.isNotEmpty(brandType.getModifiedTime())) {
