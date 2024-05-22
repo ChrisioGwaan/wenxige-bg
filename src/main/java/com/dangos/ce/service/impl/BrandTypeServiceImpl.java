@@ -19,6 +19,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -71,6 +72,11 @@ public class BrandTypeServiceImpl extends ServiceImpl<BrandTypeMapper, BrandType
         existedBrandType.setModifiedTime(LocalDateTime.now());
         existedBrandType.setModifiedUser(jwtService.getUsernameFromToken());
         return R.ok(this.updateById(existedBrandType), "Update Success!");
+    }
+
+    @Override
+    public List<BrandTypePageVO> dropdownList(String args) {
+        return baseMapper.dropDownList(args);
     }
 
 }

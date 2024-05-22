@@ -9,10 +9,14 @@ import com.dangos.ce.vo.BrandTypePageVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
 public interface BrandTypeMapper extends BaseMapper<BrandType> {
 
     IPage<BrandTypePageVO> getPageResult(Page<BrandType> page,
                                          @Param("args") BrandTypePageQueryDTO brandTypePageQueryDTO);
+
+    List<BrandTypePageVO> dropDownList(@Param("args") String args);
 
 }

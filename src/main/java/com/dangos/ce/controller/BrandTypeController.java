@@ -12,8 +12,6 @@ import com.dangos.ce.vo.BrandTypePageVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/brandType")
@@ -93,8 +91,8 @@ public class BrandTypeController {
      * @return R<List<BrandType>>
      */
     @GetMapping("/dropdown")
-    public R<List<BrandType>> dropdownList() {
-        return R.ok(brandTypeService.list());
+    public R dropdownList(@RequestParam(value = "args", required = false) String args) {
+        return R.ok(brandTypeService.dropdownList(args));
     }
 
 }

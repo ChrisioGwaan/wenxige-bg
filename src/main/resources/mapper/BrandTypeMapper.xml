@@ -44,4 +44,17 @@
         </where>
     </select>
 
+    <select id="dropDownList" resultMap="brandTypePageMap">
+        SELECT
+            a.*
+        FROM
+            `brand_type` a
+        <where>
+            a.is_del = '0'
+            <if test="args != null and args != ''">
+                AND a.brand_id = #{args}
+            </if>
+        </where>
+    </select>
+
 </mapper>
