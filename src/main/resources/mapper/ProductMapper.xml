@@ -8,6 +8,8 @@
 
     <resultMap id="productPageMap" type="com.dangos.ce.vo.ProductPageVO">
         <id column="id" property="id" />
+        <result column="brand_name" property="brandName" />
+        <result column="brand_type_name" property="brandTypeName" />
         <result column="product_name" property="productName" />
         <result column="specification" property="specification" />
         <result column="manufacture_date" property="manufactureDate" />
@@ -46,9 +48,15 @@
 
     <select id="getPageResult" resultMap="productPageMap">
         SELECT
-            a.*
+            a.*,
+            b.brand_type_name,
+            c.brand_name
         FROM
             <include refid="table_name"/> a
+                LEFT JOIN brand_type b ON b.id = a.brand_type_id
+                AND b.is_del = 0
+                LEFT JOIN brand c ON c.id = b.brand_id
+                AND c.is_del = 0
         <where>
             a.is_del = 0
             <if test="productPageQueryDTO.productName != null and productPageQueryDTO.productName != ''">

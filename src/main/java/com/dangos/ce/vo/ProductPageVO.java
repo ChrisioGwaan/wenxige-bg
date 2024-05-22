@@ -13,6 +13,10 @@ public class ProductPageVO {
      */
     private String id;
 
+    private String brandName;
+
+    private String brandTypeName;
+
     /**
      * Name of the Product 產品名稱
      */
