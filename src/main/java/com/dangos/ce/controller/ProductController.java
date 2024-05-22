@@ -8,6 +8,7 @@ import com.dangos.ce.dto.ProductPageQueryDTO;
 import com.dangos.ce.entity.Product;
 import com.dangos.ce.service.ProductService;
 import com.dangos.ce.util.R;
+import com.dangos.ce.vo.ProductInfoVO;
 import com.dangos.ce.vo.ProductPageVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
@@ -35,15 +36,11 @@ public class ProductController {
      * Get product by ID
      *
      * @param id product ID
-     * @return R<Product>
+     * @return R<ProductInfoVO>
      */
     @GetMapping("/{id}")
-    public R<ProductCreateOrUpdateDTO> selectById(@PathVariable("id") Long id) {
-        ProductCreateOrUpdateDTO productCreateOrUpdateDTO = new ProductCreateOrUpdateDTO();
-        Product product = productService.getById(id);
-        BeanUtils.copyProperties(product, productCreateOrUpdateDTO);
-        productCreateOrUpdateDTO.setId(Long.toString(product.getId()));
-        return R.ok(productCreateOrUpdateDTO);
+    public R<ProductInfoVO> selectById(@PathVariable("id") String id) {
+        return R.ok(productService.findById(id));
     }
 
     /**

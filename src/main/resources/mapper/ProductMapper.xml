@@ -22,6 +22,26 @@
         <result column="is_lock" property="isLock" />
     </resultMap>
 
+    <resultMap id="productInfoMap" type="com.dangos.ce.vo.ProductInfoVO">
+        <id column="id" property="id" />
+        <result column="brand_id" property="brandId" />
+        <result column="brand_name" property="brandName" />
+        <result column="brand_type_id" property="brandTypeId" />
+        <result column="brand_type_name" property="brandTypeName" />
+        <result column="product_name" property="productName" />
+        <result column="specification" property="specification" />
+        <result column="manufacture_date" property="manufactureDate" />
+        <result column="has_specific_day" property="hasSpecificDay" />
+        <result column="retail_price" property="retailPrice" />
+        <result column="sell_price" property="sellPrice" />
+        <result column="unit_type" property="unitType" />
+        <result column="current_quantity" property="currentQuantity" />
+        <result column="comment" property="comment" />
+        <result column="create_time" property="createTime" />
+        <result column="modified_time" property="modifiedTime" />
+        <result column="is_lock" property="isLock" />
+    </resultMap>
+
     <sql id="table_name">product</sql>
 
     <select id="getPageResult" resultMap="productPageMap">
@@ -43,6 +63,23 @@
         </where>
         ORDER BY
             a.create_time DESC
+    </select>
+
+    <select id="getProductById" resultMap="productInfoMap">
+        SELECT
+            a.*,
+            c.id AS brand_id,
+            c.brand_name,
+            b.brand_type_name
+        FROM
+            <include refid="table_name"/> a
+                LEFT JOIN brand_type b ON b.id = a.brand_type_id
+                AND b.is_del = '0'
+                LEFT JOIN brand c ON c.id = b.brand_id
+                AND c.is_del = '0'
+        WHERE
+            a.is_del = '0'
+            AND a.id = #{id}
     </select>
 
 </mapper>

@@ -7,13 +7,14 @@ import com.dangos.ce.dto.ProductCreateOrUpdateDTO;
 import com.dangos.ce.dto.ProductPageQueryDTO;
 import com.dangos.ce.entity.Product;
 import com.dangos.ce.util.R;
+import com.dangos.ce.vo.ProductInfoVO;
 import com.dangos.ce.vo.ProductPageVO;
 
 public interface ProductService extends IService<Product> {
 
     IPage<ProductPageVO> listProduct(Page<Product> page, ProductPageQueryDTO productPageQueryDTO);
 
-    Product findById(Long id);
+    ProductInfoVO findById(String id);
 
     R createNew(ProductCreateOrUpdateDTO productCreateOrUpdateDTO);
 

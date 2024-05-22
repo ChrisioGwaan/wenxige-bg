@@ -7,6 +7,7 @@ import com.dangos.ce.dto.BrandTypeCreateOrUpdateDTO;
 import com.dangos.ce.dto.BrandTypePageQueryDTO;
 import com.dangos.ce.entity.BrandType;
 import com.dangos.ce.util.R;
+import com.dangos.ce.vo.BrandTypeInfoVO;
 import com.dangos.ce.vo.BrandTypePageVO;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public interface BrandTypeService extends IService<BrandType> {
 
     IPage<BrandTypePageVO> listBrandType(Page<BrandType> page, BrandTypePageQueryDTO brandTypePageQueryDTO);
 
-    BrandTypePageVO findById(Long id);
+    BrandTypeInfoVO findById(Long id);
 
     R createNew(BrandTypeCreateOrUpdateDTO brandTypeCreateOrUpdateDTO);
 

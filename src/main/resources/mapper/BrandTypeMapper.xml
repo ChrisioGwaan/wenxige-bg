@@ -18,6 +18,17 @@
 
     <sql id="table_name">brand_type</sql>
 
+    <resultMap id="BrandTypeInfoMap" type="com.dangos.ce.vo.BrandTypeInfoVO">
+        <id column="id" property="id" />
+        <result column="brand_id" property="brandId" />
+        <result column="brand_name" property="brandName" />
+        <result column="brand_type_name" property="brandTypeName" />
+        <result column="comment" property="comment" />
+        <result column="create_time" property="createTime" />
+        <result column="modified_time" property="modifiedTime" />
+        <result column="is_lock" property="isLock" />
+    </resultMap>
+
     <select id="getPageResult" resultMap="brandTypePageMap">
         SELECT
             a.id,
@@ -55,6 +66,23 @@
                 AND a.brand_id = #{args}
             </if>
         </where>
+    </select>
+
+    <select id="getBrandTypeInfo" resultMap="BrandTypeInfoMap">
+        SELECT
+            a.id,
+            a.brand_id,
+            b.brand_name,
+            a.brand_type_name,
+            a.`comment`,
+            a.create_time,
+            a.modified_time,
+            a.is_lock
+        FROM
+            `brand_type` a
+                LEFT JOIN brand b ON b.id = a.brand_id AND b.is_del = '0'
+        WHERE
+            a.id = #{id} AND a.is_del = '0'
     </select>
 
 </mapper>

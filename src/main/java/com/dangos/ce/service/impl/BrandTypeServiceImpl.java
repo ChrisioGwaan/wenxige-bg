@@ -12,6 +12,7 @@ import com.dangos.ce.mapper.BrandMapper;
 import com.dangos.ce.mapper.BrandTypeMapper;
 import com.dangos.ce.service.BrandTypeService;
 import com.dangos.ce.util.R;
+import com.dangos.ce.vo.BrandTypeInfoVO;
 import com.dangos.ce.vo.BrandTypePageVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,21 +37,8 @@ public class BrandTypeServiceImpl extends ServiceImpl<BrandTypeMapper, BrandType
     }
 
     @Override
-    public BrandTypePageVO findById(Long id) {
-        BrandType brandType = this.getById(id);
-        if (ObjectUtils.isEmpty(brandType)) {
-            return null;
-        }
-        BrandTypePageVO brandTypePageVO = new BrandTypePageVO();
-        BeanUtils.copyProperties(brandType, brandTypePageVO);
-        brandTypePageVO.setBrandId(brandType.getBrandId().toString());
-        brandTypePageVO.setId(brandType.getId().toString());
-        brandTypePageVO.setCreateTime(brandType.getCreateTime().toString());
-        if (ObjectUtils.isNotEmpty(brandType.getModifiedTime())) {
-            brandTypePageVO.setModifiedTime(brandType.getModifiedTime().toString());
-        }
-        brandTypePageVO.setIsLock(String.valueOf(brandType.getIsLock()));
-        return brandTypePageVO;
+    public BrandTypeInfoVO findById(Long id) {
+        return baseMapper.getBrandTypeInfo(id);
     }
 
     @Override

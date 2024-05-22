@@ -8,6 +8,7 @@ import com.dangos.ce.dto.BrandTypePageQueryDTO;
 import com.dangos.ce.entity.BrandType;
 import com.dangos.ce.service.BrandTypeService;
 import com.dangos.ce.util.R;
+import com.dangos.ce.vo.BrandTypeInfoVO;
 import com.dangos.ce.vo.BrandTypePageVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +38,7 @@ public class BrandTypeController {
      * @return R<BrandType>
      */
     @GetMapping("/{id}")
-    public R<BrandTypePageVO> selectById(@PathVariable("id") Long id) {
+    public R<BrandTypeInfoVO> selectById(@PathVariable("id") Long id) {
         return R.ok(brandTypeService.findById(id));
     }
 

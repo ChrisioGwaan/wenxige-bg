@@ -11,6 +11,7 @@ import com.dangos.ce.jwt.JwtService;
 import com.dangos.ce.mapper.ProductMapper;
 import com.dangos.ce.service.ProductService;
 import com.dangos.ce.util.R;
+import com.dangos.ce.vo.ProductInfoVO;
 import com.dangos.ce.vo.ProductPageVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -42,8 +43,11 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     }
 
     @Override
-    public Product findById(Long id) {
-        return this.getById(id);
+    public ProductInfoVO findById(String id) {
+        ProductInfoVO productInfoVO = baseMapper.getProductById(id);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM");
+        productInfoVO.setManufactureDateStr(productInfoVO.getManufactureDate().format(formatter));
+        return productInfoVO;
     }
 
     @Override
