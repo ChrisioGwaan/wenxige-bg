@@ -79,3 +79,20 @@ CREATE TABLE `sys_file` (
   `is_del` CHAR ( 1 ) DEFAULT '0' NOT NULL COMMENT 'Deletion status 刪除狀態 0-正常 1-已刪除',
 PRIMARY KEY ( `id` )
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = 'sys_file 文件管理表';
+
+CREATE TABLE  `department` (
+    `id` BIGINT (20) NOT NULL COMMENT 'Department ID 部門ID',
+    `parent_department_id` BIGINT(20) COMMENT 'Parent Department ID 上級部門ID',
+    `department_name` VARCHAR ( 255 ) NOT NULL COMMENT 'Department Name 部門名稱',
+    `description` TEXT COMMENT 'Department Description 部門簡介',
+    `tel_number` VARCHAR(20) COMMENT 'Department Telephone Number 部門電話號碼',
+    `email` VARCHAR(255) COMMENT 'Department Email Address 部門電子郵件',
+    `location` VARCHAR (255) COMMENT 'Department Location 部門位置',
+    `create_user` VARCHAR ( 64 ) NOT NULL COMMENT 'Create user 創建的用戶名',
+    `modified_user` VARCHAR ( 64 ) DEFAULT NULL COMMENT 'Modified user 修改的用戶名',
+    `create_time` DATETIME NOT NULL COMMENT 'Create time 創建時間',
+    `modified_time` DATETIME DEFAULT NULL COMMENT 'Modified time 修改時間',
+    `status` INT ( 1 ) DEFAULT NULL COMMENT 'Department Status 部門狀態',
+    `is_del` CHAR ( 1 ) DEFAULT '0' NOT NULL COMMENT 'Deletion status 刪除狀態 0-正常 1-已刪除',
+PRIMARY KEY ( `id` )
+) ENGINE = InnoDB AUTO_INCREMENT = 0 DEFAULT CHARSET = utf8mb4 COMMENT = 'Department';
