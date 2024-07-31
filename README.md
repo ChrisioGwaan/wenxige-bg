@@ -10,8 +10,8 @@
 
 ## Git Branch
 
-- **master**: For release version only.
-- **dev**: Implementing new features, bug fixes, and other development tasks.
+- **feature**: For release version only.
+- **Other individual branches**: Implementing new features, bug fixes, and other development tasks.
 
 ## Project Description
 
@@ -20,22 +20,22 @@
 
 ### Local Development
 
-| Tool                        | Version    |
-|-----------------------------|------------|
-| Java                        | 21         |
-| Maven                       | >= 3.9.0   |
+| Tool                        | Version  |
+|-----------------------------|----------|
+| Java                        | 21       |
+| Maven                       | >= 3.5.0 |
 
 ### Dependency
 
 | Dependency   | Version |
 |--------------|---------|
-| Spring Boot  | 3.2.4   |
-| MySQL        | 8.2.0   |
-| MyBatis Plus | 3.5.6   |
+| Spring Boot  | 3.2.6   |
+| MySQL        | 8.0.38  |
+| MyBatis Plus | 3.5.7   |
 | JJWT         | 0.11.5  |
 | JWT Nimbusds | 9.37.3  |
 | Lombok       | 1.18.32 |
 
-## Author
+## Project Owner
 
 - [x] [Chrisio Gwaan](https://github.com/ChrisioGwaan)
