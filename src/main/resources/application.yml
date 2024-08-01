@@ -44,3 +44,9 @@ cloudflare:
     region: auto
     endpoint: ${R2_ENDPOINT}
     bucketName: ${R2_BUCKET_NAME}
+
+springdoc:
+  swagger-ui:
+    enabled: true
+  api-docs:
+    enabled: true

@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.4</version>
+		<version>3.2.6</version>
 		<relativePath/>
 	</parent>
 	<groupId>com.dangos</groupId>
@@ -16,11 +16,12 @@
 	<properties>
 		<java.version>21</java.version>
 		<jwt.nimbusds>9.37.3</jwt.nimbusds>
-		<mysql.connection.j>8.2.0</mysql.connection.j>
+		<mysql.connection.j>8.0.33</mysql.connection.j>
 		<project.lombok>1.18.32</project.lombok>
 		<jjwt.version>0.11.5</jjwt.version>
-		<mybatis.plus.version>3.5.6</mybatis.plus.version>
+		<mybatis.plus.version>3.5.7</mybatis.plus.version>
 		<aws.sdk.version>2.25.55</aws.sdk.version>
+		<springdoc.version>2.6.0</springdoc.version>
 	</properties>
 	<dependencies>
 
@@ -138,6 +139,23 @@
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
 			<version>2.3.1</version>
+		</dependency>
+
+		<!-- Springdoc OpenAPI -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>${springdoc.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
+			<version>${springdoc.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webflux-api</artifactId>
+			<version>${springdoc.version}</version>
 		</dependency>
 
 	</dependencies>

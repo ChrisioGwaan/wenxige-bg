@@ -24,6 +24,25 @@ public class SecurityConfig {
 
     private final AuthenticationProvider authenticationProvider;
 
+    private static final String[] AUTH_WHITELIST = {
+            "/api/v1/auth/**",
+            "/v2/api-docs",
+            "/v3/api-docs",
+            "/v3/api-docs/**",
+            "/swagger-resources",
+            "/swagger-resources/**",
+            "/configuration/ui",
+            "/configuration/security",
+            "/swagger-ui/**",
+            "/webjars/**",
+            "/swagger-ui.html",
+            "/api/auth/**",
+            "/api/test/**",
+            "/authenticate",
+            "/login",
+            "/"
+    };
+
     @Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -37,15 +56,11 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        // .authorizeHttpRequests( auth -> {
-        //                    auth.requestMatchers("/api/v1/auth/**").permitAll();
-        //                    auth.anyRequest().authenticated();
-        //                })
         // @formatter:off
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests( auth -> {
-                    auth.requestMatchers("/api/v1/auth/**", "/", "/login").permitAll();
+                    auth.requestMatchers(AUTH_WHITELIST).permitAll();
                     auth.anyRequest().authenticated();
                 })
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
