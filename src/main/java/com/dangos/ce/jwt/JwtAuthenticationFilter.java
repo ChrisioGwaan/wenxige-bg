@@ -1,5 +1,6 @@
 package com.dangos.ce.jwt;
 
+import com.dangos.ce.entity.SysUser;
 import com.dangos.ce.util.R;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.Nonnull;
@@ -60,6 +61,16 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
+
+            if (userDetails instanceof SysUser sysUser) {
+                if (sysUser.getToken() == null || !jwt.equals(sysUser.getToken())) {
+                    R<?> responseEntity = R.failed("Token has been invalidated");
+                    response.setStatus(HttpServletResponse.SC_OK);
+                    response.setContentType("application/json");
+                    response.getWriter().write(new ObjectMapper().writeValueAsString(responseEntity));
+                    return;
+                }
+            }
 
             if (jwtService.isTokenValid(jwt, userDetails)) {
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(

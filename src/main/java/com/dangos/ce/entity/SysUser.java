@@ -37,6 +37,8 @@ public class SysUser implements UserDetails {
     @TableField(value = "role")
     private Role role;
 
+    private String token;
+
     private String createUser;
 
     private String modifiedUser;
