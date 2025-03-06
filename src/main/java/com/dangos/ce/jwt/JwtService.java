@@ -1,10 +1,13 @@
 package com.dangos.ce.jwt;
 
+import com.dangos.ce.entity.SysUser;
+import com.dangos.ce.mapper.SysUserMapper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,6 +27,7 @@ import java.util.function.Function;
  */
 
 @Service
+@RequiredArgsConstructor
 public class JwtService {
 
     private static final String SECRET_KEY = "cb8cc6aaa248be7795fce89e4b172c7a9029d6e7881aa66dc449c6580aa4c1dd";
@@ -31,6 +35,8 @@ public class JwtService {
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
+
+    private final SysUserMapper sysUserMapper;
 
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = extractAllClaims(token);
@@ -42,14 +48,20 @@ public class JwtService {
     }
 
     public String generateToken(Map<String, Object> claims, UserDetails userDetails) {
-        return Jwts
+        String token = Jwts
                 .builder()
                 .setClaims(claims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 12)) // 12 hours - Dev purpose
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 8)) // 8 hours - Dev purpose
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
+
+        if (userDetails instanceof SysUser sysUser) {
+            sysUser.setToken(token);
+            sysUserMapper.updateById(sysUser);
+        }
+        return token;
     }
 
     public boolean isTokenValid(String token, UserDetails userDetails) {

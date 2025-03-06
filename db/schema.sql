@@ -96,3 +96,5 @@ CREATE TABLE  `department` (
     `is_del` CHAR ( 1 ) DEFAULT '0' NOT NULL COMMENT 'Deletion status 刪除狀態 0-正常 1-已刪除',
 PRIMARY KEY ( `id` )
 ) ENGINE = InnoDB AUTO_INCREMENT = 0 DEFAULT CHARSET = utf8mb4 COMMENT = 'Department';
+
+ALTER TABLE sys_user ADD token TEXT DEFAULT NULL COMMENT 'Token' AFTER role;
