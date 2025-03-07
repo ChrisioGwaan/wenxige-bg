@@ -4,9 +4,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.dangos.ce.mapper.BrandMapper">
+<mapper namespace="com.wenxige.bg.mapper.BrandMapper">
 
-    <resultMap id="brandPageMap" type="com.dangos.ce.vo.BrandPageVO">
+    <resultMap id="brandPageMap" type="com.wenxige.bg.vo.BrandPageVO">
         <id column="id" property="id" />
         <result column="brand_name" property="brandName" />
         <result column="origin_year" property="originYear" />

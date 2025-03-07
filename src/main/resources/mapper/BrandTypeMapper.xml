@@ -4,9 +4,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.dangos.ce.mapper.BrandTypeMapper">
+<mapper namespace="com.wenxige.bg.mapper.BrandTypeMapper">
 
-    <resultMap id="brandTypePageMap" type="com.dangos.ce.vo.BrandTypePageVO">
+    <resultMap id="brandTypePageMap" type="com.wenxige.bg.vo.BrandTypePageVO">
         <id column="id" property="id" />
         <result column="brand_name" property="brandName" />
         <result column="brand_type_name" property="brandTypeName" />
@@ -18,7 +18,7 @@
 
     <sql id="table_name">brand_type</sql>
 
-    <resultMap id="BrandTypeInfoMap" type="com.dangos.ce.vo.BrandTypeInfoVO">
+    <resultMap id="BrandTypeInfoMap" type="com.wenxige.bg.vo.BrandTypeInfoVO">
         <id column="id" property="id" />
         <result column="brand_id" property="brandId" />
         <result column="brand_name" property="brandName" />
