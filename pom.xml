@@ -8,7 +8,7 @@
 		<version>3.2.6</version>
 		<relativePath/>
 	</parent>
-	<groupId>com.wenxige</groupId>
+	<groupId>com.wenxige.bg</groupId>
 	<artifactId>wenxige-bg</artifactId>
 	<version>0.1.0</version>
 	<name>wenxige-bg</name>
