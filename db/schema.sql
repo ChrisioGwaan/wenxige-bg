@@ -78,9 +78,9 @@ CREATE TABLE `sys_file` (
   `modified_time` DATETIME DEFAULT NULL COMMENT 'Modified time 修改時間',
   `is_del` CHAR ( 1 ) DEFAULT '0' NOT NULL COMMENT 'Deletion status 刪除狀態 0-正常 1-已刪除',
 PRIMARY KEY ( `id` )
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = 'sys_file 文件管理表';
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = 'Sys File 文件管理表';
 
-CREATE TABLE  `department` (
+CREATE TABLE  `sys_department` (
     `id` BIGINT (20) NOT NULL COMMENT 'Department ID 部門ID',
     `parent_department_id` BIGINT(20) COMMENT 'Parent Department ID 上級部門ID',
     `department_name` VARCHAR ( 255 ) NOT NULL COMMENT 'Department Name 部門名稱',
@@ -95,6 +95,18 @@ CREATE TABLE  `department` (
     `status` INT ( 1 ) DEFAULT NULL COMMENT 'Department Status 部門狀態',
     `is_del` CHAR ( 1 ) DEFAULT '0' NOT NULL COMMENT 'Deletion status 刪除狀態 0-正常 1-已刪除',
 PRIMARY KEY ( `id` )
-) ENGINE = InnoDB AUTO_INCREMENT = 0 DEFAULT CHARSET = utf8mb4 COMMENT = 'Department';
+) ENGINE = InnoDB AUTO_INCREMENT = 0 DEFAULT CHARSET = utf8mb4 COMMENT = 'Sys Department 部門表';
 
 ALTER TABLE sys_user ADD token TEXT DEFAULT NULL COMMENT 'Token' AFTER role;
+
+CREATE TABLE `sys_tenant` (
+    `id` BIGINT (20) NOT NULL COMMENT 'Tenant ID 租戶ID',
+    `tenant_name` VARCHAR (255) NOT NULL COMMENT 'Tenant Name 租戶名稱',
+    `description` TEXT COMMENT 'Tenant Description 租戶簡介',
+    `create_user` VARCHAR (64) NOT NULL COMMENT 'Create user 創建的用戶名',
+    `modified_user` VARCHAR (64) DEFAULT NULL COMMENT 'Modified user 修改的用戶名',
+    `create_time` DATETIME NOT NULL COMMENT 'Create time 創建時間',
+    `modified_time` DATETIME DEFAULT NULL COMMENT 'Modified time 修改時間',
+    `is_del` CHAR(1) DEFAULT '0' NOT NULL COMMENT 'Deletion status 刪除狀態 0-正常 1-已刪除',
+PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = 'Sys Tenant 租戶表';
