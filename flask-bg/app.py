@@ -8,11 +8,17 @@ from api.routes import api_blueprint
 from response_utils import error_response
 from flask import Flask, jsonify
 from flask_cors import CORS
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 app.config.from_object("config.Config")
 
 app.register_blueprint(api_blueprint, url_prefix="/api/v1")
+
+db = SQLAlchemy(app)
+
+migrate = Migrate(app, db)
 
 CORS(
     app,
