@@ -6,17 +6,33 @@ Description: Main Flask application file that initializes the app, registers blu
 from flask import Flask, jsonify
 from api.routes import api_blueprint
 from response_utils import error_response
+from flask import Flask, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config.from_object("config.Config")
 
 app.register_blueprint(api_blueprint, url_prefix="/api/v1")
 
+CORS(
+    app,
+    resources={r"/api/*": {"origins": "*"}},
+    supports_credentials=True,
+    expose_headers=["Content-Disposition"],
+)
+
 
 # Welcome route
 @app.route("/")
 def index():
     return jsonify({"message": "Welcome to the Flask API!"})
+
+
+# Route to demonstrate CORS
+@app.route("/api/data", methods=["GET"])
+def get_data():
+    data = {"info": "This is accessible to any origin"}
+    return jsonify(data)
 
 
 # Global error handler for 400 Bad Request
