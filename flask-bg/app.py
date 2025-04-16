@@ -16,9 +16,9 @@ app.config.from_object("config.Config")
 
 app.register_blueprint(api_blueprint, url_prefix="/api/v1")
 
-db = SQLAlchemy(app)
+# db = SQLAlchemy(app)
 
-migrate = Migrate(app, db)
+# migrate = Migrate(app, db)
 
 CORS(
     app,
