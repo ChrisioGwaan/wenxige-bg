@@ -4,7 +4,7 @@ Description: Routes for the Flask API application.
 """
 
 from flask import Blueprint, request, abort, jsonify
-from response_utils import success_response, error_response
+from utils.response_utils import success_response, error_response
 
 api_blueprint = Blueprint("api", __name__)
 
