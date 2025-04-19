@@ -1,5 +1,7 @@
 # Flask Backend (Lightweight)
 
+A lightweight Flask backend for a web application.
+
 ### Installation
 
 ```bash
