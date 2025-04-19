@@ -36,3 +36,8 @@ static/
 .DS_Store
 Thumbs.db
 .vercel
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
