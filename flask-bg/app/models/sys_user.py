@@ -17,9 +17,9 @@ class SysUser(db.Model):
     token = db.Column(db.String(255))
     create_user = db.Column(db.String(50))
     modified_user = db.Column(db.String(50))
-    create_time = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    create_time = db.Column(db.DateTime, default=datetime.now, nullable=False)
     modified_time = db.Column(
-        db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False
+        db.DateTime, default=datetime.now, onupdate=datetime.now, nullable=False
     )
     is_del = db.Column(db.Boolean, default=False, nullable=False)
 
