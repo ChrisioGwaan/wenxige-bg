@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from app.services.sys_user_service import UserService
 from app.utils import response_utils
-from app.schemas.sys_user_schema import UserSchema
+from app.vo.sys_user_vo import UserSchema
 
 user_bp = Blueprint("users", __name__)
 user_schema = UserSchema()
