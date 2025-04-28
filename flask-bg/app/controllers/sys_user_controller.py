@@ -1,11 +1,11 @@
 from flask import Blueprint, request, jsonify
 from app.services.sys_user_service import UserService
 from app.utils import response_utils
-from app.vo.sys_user_vo import UserSchema
+from app.vo.sys_user_vo import UserVO
 
 user_bp = Blueprint("users", __name__)
-user_schema = UserSchema()
-users_schema = UserSchema(many=True)
+user_schema = UserVO()
+users_schema = UserVO(many=True)
 
 
 @user_bp.route("/", methods=["GET"])

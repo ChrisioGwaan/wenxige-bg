@@ -2,7 +2,7 @@ from marshmallow import Schema, fields
 from app.enums import Role
 
 
-class UserSchema(Schema):
+class UserVO(Schema):
     id = fields.String(dump_only=True)
     username = fields.String(required=True)
     firstname = fields.String()
