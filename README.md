@@ -51,6 +51,7 @@
       </ul>
     </li>
     <li><a href="#project-structure">Project Structure</a></li>
+    <li><a href="#database-design">Database Design</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -152,6 +153,12 @@ wenxige-bg
 │   └── test_users.py               - User test cases
 └── vercel.json                     - Vercel configuration file
 ```
+
+<p align="right">(<a href="#readme-top">📍back to top</a>)</p>
+
+## Database Design
+
+![Database Design](assets/wenxigedb_design.png)
 
 <p align="right">(<a href="#readme-top">📍back to top</a>)</p>
 
