@@ -13,7 +13,11 @@ python -m venv venv
 2. Activate Virtual Environment - 激活虚拟环境
 
 ```bash
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+# On Linux or macOS
+source venv/bin/activate  
+
+# On Windows use
+venv\Scripts\activate
 ```
 
 3. Install Dependencies - 安装依赖
