@@ -50,7 +50,8 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#project-structure">Project Structure</a></li>
+    <li><a href="#project-structure-flask">Project Structure (Flask) </a></li>
+    <li><a href="#project-structure-spring-boot">Project Structure (Spring Boot)</a></li>
     <li><a href="#database-design">Database Design</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
@@ -61,9 +62,7 @@
 
 ## About The Project
 
-Flask is a lightweight WSGI web application framework in Python. It is designed with simplicity and flexibility in mind, making it easy to get started with web development. Flask provides a minimalistic approach, allowing developers to build web applications quickly without unnecessary complexity. That's why we chose Flask as the backend framework for this project.
-
-We still keep the Spring Boot project for future reference. If our business grows and we need to handle more complex tasks, we can consider switching back to Spring Boot.
+This is the backend service for Guangzhou Wenxige Trading Co., Ltd. Admin Management System. We will continue to develop the system using Spring Boot for scalability and performance.
 
 <p align="right">(<a href="#readme-top">📍back to top</a>)</p>
 
@@ -77,17 +76,20 @@ We still keep the Spring Boot project for future reference. If our business grow
 
 <p align="right">(<a href="#readme-top">📍back to top</a>)</p>
 
-## Getting Started (Flask)
+## Getting Started
 
 ### Prerequisites
 
-* **Python 3.8 or higher**, please check the [Python official website](https://www.python.org/downloads/) for more information.
-* **Git**, please check the [Git official website](https://git-scm.com/downloads) for more information.
-* Postman 
-* DB
-
+* **Python 3.8 or higher**
+* **Git**
+* **Java 21**
+* **Maven 3.8 or higher**
+* **Postman** (Optional, for testing APIs)
+* **DbVisualizer** (Optional, for database management)
 
 ### Installation
+
+> Flask
 
 1. Clone the repo
    ```sh
@@ -116,10 +118,21 @@ We still keep the Spring Boot project for future reference. If our business grow
     ```sh
     python run.py
     ```
+   
+> Spring Boot
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/ChrisioGwaan/wenxige-bg.git
+    ```
+
+2. Open the project in your IDE (e.g., IntelliJ IDEA, Eclipse).
+
+3. Wait for the IDE to download the required dependencies.
 
 <p align="right">(<a href="#readme-top">📍back to top</a>)</p>
 
-## Project Structure
+## Project Structure (Flask)
 
 ```
 wenxige-bg
@@ -155,6 +168,33 @@ wenxige-bg
 │   ├── __init__.py                 - Test initialization
 │   └── test_users.py               - User test cases
 └── vercel.json                     - Vercel configuration file
+```
+
+## Project Structure (Spring Boot)
+
+```
+E:\repo2\wenxige-bg
+├── db
+│   └── schema.sql                        - Database schema file
+├── pom.xml                               - Maven configuration file
+└── wenxige-bg-service
+    ├── src/main/java/com/wenxige/bg
+    │   ├── WenxigeBgApplication.java     - Main application entry point
+    │   ├── config                        - Configuration directory
+    │   ├── controller                    - Contains all controllers for the application
+    │   ├── dto                           - Data Transfer Objects
+    │   ├── entity                        - Contains all data models
+    │   ├── enums                         - Enumeration definitions
+    │   ├── jwt                           - JWT authentication
+    │   ├── mapper                        - MyBatis mapper interfaces
+    │   ├── service                       - Contains all service logic
+    │   ├── util                          - Contains utility functions
+    │   └── vo                            - View Objects
+    └── resources
+        ├── application.yml               - Application configuration file
+        ├── log4j.properties              - Logging configuration file
+        ├── mapper                        - MyBatis XML mapper files
+        └── templates                     - Thymeleaf templates
 ```
 
 <p align="right">(<a href="#readme-top">📍back to top</a>)</p>
