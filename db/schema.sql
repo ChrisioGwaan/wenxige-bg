@@ -85,7 +85,7 @@ CREATE TABLE `category` (
     `modified_time`         DATETIME                DEFAULT NULL                COMMENT 'Modified time 修改時間',
     `is_del`                CHAR        ( 1 )       DEFAULT '0' NOT NULL        COMMENT 'Deletion status 刪除狀態 0-正常 1-已刪除',
 PRIMARY KEY ( `id` )
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = '';
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = 'Category Info 類別信息表';
 
 CREATE TABLE `product` (
     `id`                    BIGINT      ( 20 )          NOT NULL                COMMENT 'Product ID 產品ID',
