@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wenxige.bg.mapper.SysRoleMapper">
+
+    <resultMap id="sysRoleMap" type="com.wenxige.bg.entity.SysRole">
+        <id column="id" property="id" />
+        <result column="role_name" property="username" />
+        <result column="create_time" property="createTime" />
+        <result column="modified_time" property="modifiedTime" />
+    </resultMap>
+
+    <sql id="table_name">sys_role</sql>
+
+</mapper>
