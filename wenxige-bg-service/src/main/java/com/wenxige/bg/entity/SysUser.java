@@ -24,6 +24,8 @@ public class SysUser implements UserDetails {
     @TableId(type = IdType.ASSIGN_UUID)
     private String id;
 
+    private Long avatarFileId;
+
     private String username;
 
     private String firstname;
@@ -34,10 +36,7 @@ public class SysUser implements UserDetails {
 
     private String email;
 
-    @TableField(value = "role")
-    private Role role;
-
-    private String token;
+    private Integer sysRoleId;
 
     private String createUser;
 
@@ -47,12 +46,14 @@ public class SysUser implements UserDetails {
 
     private LocalDateTime modifiedTime;
 
+    private Character isLocked;
+
     @TableLogic
     private Character isDel;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return List.of(new SimpleGrantedAuthority("ADMIN"));
     }
 
     @Override

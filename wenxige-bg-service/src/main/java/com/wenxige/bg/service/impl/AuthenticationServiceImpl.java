@@ -50,7 +50,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .createUser(jwtService.getUsernameFromToken())
                 .createTime(LocalDateTime.now())
-                .role(Role.ADMIN)
+                .sysRoleId(1)
                 .build();
         sysUserMapper.insert(sysUser);
         var jwtToken = jwtService.generateToken(sysUser);

@@ -57,10 +57,10 @@ public class JwtService {
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
 
-        if (userDetails instanceof SysUser sysUser) {
-            sysUser.setToken(token);
-            sysUserMapper.updateById(sysUser);
-        }
+//        if (userDetails instanceof SysUser sysUser) {
+//            sysUser.setToken(token);
+//            sysUserMapper.updateById(sysUser);
+//        }
         return token;
     }
 
