@@ -124,3 +124,8 @@ CREATE TABLE `product_unit` (
     `is_del`                CHAR        ( 1 )           DEFAULT '0' NOT NULL    COMMENT 'Deletion status 刪除狀態 0-正常 1-已刪除',
 PRIMARY KEY ( `id` )
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = 'Product Unit Info 產品單位信息表';
+
+INSERT INTO `sys_role` (`id`, `role_name`, `create_user`, `modified_user`, `create_time`, `modified_time`, `is_del`)
+VALUES
+    (1, 'Admin', 'System', NULL, NOW(), NULL, '0'),
+    (2, 'User', 'System', NULL, NOW(), NULL, '0');
