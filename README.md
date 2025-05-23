@@ -215,7 +215,7 @@ See the [open issues](https://github.com/ChrisioGwaan/wenxige-bg/issues) for a f
 
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**. Please check [Code of Conduct](https://github.com/ChrisioGwaan/wenxige-bg/code-of-conduct) for more information.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**. Please check [Code of Conduct](CODE_OF_CONDUCT.md) for more information.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
