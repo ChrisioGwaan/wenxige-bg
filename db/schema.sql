@@ -127,5 +127,7 @@ PRIMARY KEY ( `id` )
 
 INSERT INTO `sys_role` (`id`, `role_name`, `create_user`, `modified_user`, `create_time`, `modified_time`, `is_del`)
 VALUES
-    (1, 'Admin', 'System', NULL, NOW(), NULL, '0'),
-    (2, 'User', 'System', NULL, NOW(), NULL, '0');
+    (1, 'ROLE_ADMIN', 'System', NULL, NOW(), NULL, '0'),
+    (2, 'ROLE_USER', 'System', NULL, NOW(), NULL, '0');
+
+ALTER TABLE `sys_user` MODIFY COLUMN `sys_role_id` BIGINT(20) NOT NULL COMMENT 'Role ID 角色ID';

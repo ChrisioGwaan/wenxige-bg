@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.wenxige.bg.entity.SysUser;
 import com.wenxige.bg.enums.Role;
 import com.wenxige.bg.jwt.JwtService;
+import com.wenxige.bg.mapper.SysRoleMapper;
 import com.wenxige.bg.mapper.SysUserMapper;
 import com.wenxige.bg.service.AuthenticationService;
 import com.wenxige.bg.util.AuthenticationRequest;
@@ -25,6 +26,8 @@ import java.time.LocalDateTime;
 public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final SysUserMapper sysUserMapper;
+
+    private final SysRoleMapper sysRoleMapper;
 
     private final PasswordEncoder passwordEncoder;
 
@@ -50,7 +53,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .createUser(jwtService.getUsernameFromToken())
                 .createTime(LocalDateTime.now())
-                .sysRoleId(1)
+                .sysRoleId(sysRoleMapper.selectById(2L).getId())
                 .build();
         sysUserMapper.insert(sysUser);
         var jwtToken = jwtService.generateToken(sysUser);

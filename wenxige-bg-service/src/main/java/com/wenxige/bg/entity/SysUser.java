@@ -36,7 +36,7 @@ public class SysUser implements UserDetails {
 
     private String email;
 
-    private Integer sysRoleId;
+    private Long sysRoleId;
 
     private String createUser;
 
