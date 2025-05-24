@@ -1,7 +1,7 @@
 package com.wenxige.bg.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
-import com.wenxige.bg.enums.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -51,9 +51,15 @@ public class SysUser implements UserDetails {
     @TableLogic
     private Character isDel;
 
+    @JsonIgnore
+    private SysRole sysRole;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ADMIN"));
+        if (sysRole != null && sysRole.getRoleName() != null) {
+            return List.of(new SimpleGrantedAuthority(sysRole.getRoleName()));
+        }
+        return List.of();
     }
 
     @Override
