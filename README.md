@@ -37,6 +37,7 @@
 <details>
   <summary>Table of Contents</summary>
   <ol>
+    <li><a href="#-security-alert">🚨 Security Alert</a></li>
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
@@ -59,6 +60,10 @@
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
+
+## 🚨 Security Alert
+
+**IMPORTANT SECURITY NOTICE**: A phishing attempt has been detected in this repository (Issue #18). **DO NOT** click on any suspicious links requesting GitHub token verification or OAuth permissions. For security reporting, please see our [Security Policy](SECURITY.md).
 
 ## About The Project
 
